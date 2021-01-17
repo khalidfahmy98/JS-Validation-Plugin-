@@ -1,0 +1,85 @@
+/* global styling */
+/* Toaster Styling */
+.app-toasters-wrapper {
+  position: fixed;
+  right: 50px;
+  top: 80px;
+  z-index: 2;
+  width: 260px;
+  height: 500px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.app-toasters-wrapper::-webkit-scrollbar {
+  display: none;
+}
+.app-toasters-wrapper .toaster {
+  width: 100%;
+  padding: 15px;
+  border: 1px solid #dedede;
+  background-color: white;
+  border-radius: 3px;
+  font-family: "Cairo", sans-serif;
+  position: relative;
+}
+.app-toasters-wrapper .toaster:after, .app-toasters-wrapper .toaster:before {
+  display: table;
+  content: " ";
+}
+.app-toasters-wrapper .toaster:after {
+  clear: both;
+}
+.app-toasters-wrapper .toaster .delete-toaster {
+  position: absolute;
+  color: #dedede;
+  right: 10px;
+  top: 10px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.app-toasters-wrapper .toaster .delete-toaster:hover {
+  color: #6d6d6d;
+}
+.app-toasters-wrapper .toaster .toaster-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  float: left;
+  padding-left: 18px;
+  padding-top: 15px;
+  border: 1px solid #6d6d6d;
+}
+.app-toasters-wrapper .toaster .toaster-icon i {
+  font-size: 25px;
+}
+.app-toasters-wrapper .toaster .toaster-text {
+  width: 160px;
+  float: right;
+  padding-top: 18px;
+  text-align: center;
+  color: #6d6d6d;
+  font-size: 12px;
+}
+.app-toasters-wrapper .toaster.toaster-success {
+  border-color: #10ac84;
+}
+.app-toasters-wrapper .toaster.toaster-success .toaster-icon {
+  color: #10ac84;
+  border-color: #10ac84;
+}
+.app-toasters-wrapper .toaster.toaster-danger {
+  border-color: #e74c3c;
+}
+.app-toasters-wrapper .toaster.toaster-danger .toaster-icon {
+  color: #e74c3c;
+  border-color: #e74c3c;
+}
+.app-toasters-wrapper .toaster.toaster-warning {
+  border-color: #f1c40f;
+}
+.app-toasters-wrapper .toaster.toaster-warning .toaster-icon {
+  color: #f1c40f;
+  border-color: #f1c40f;
+}
+
+/*# sourceMappingURL=validation.css.map */
