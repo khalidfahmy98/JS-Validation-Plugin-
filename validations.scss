@@ -1,0 +1,181 @@
+// Fonts
+$cairo-font: 'Cairo',sans-serif;
+$gesLight-font: 'Cairo',sans-serif;
+$gesBold-font: 'Cairo',sans-serif;
+// dimensions
+$full-width: 100%;
+$sectoring-margin: 20px;
+$sign-width: 300px;
+$sign-height: 300px;
+// Font sizes
+$paragaph-font: 12px;
+$header-font: 20px;
+$input-font: 13px;
+//main design ui colors
+$main-color: #151965;
+$font-menu-color: #dedede;
+$background-color: #eee;
+$text-color: #6d6d6d;
+$heading-text-color: #2e2e2e;
+$text-bg-color: #cccefa;
+$text-bg-color-darked: #8f90b1;
+//front colors
+$gray-ground: rgb(235, 235, 235);
+$gray-ground-border: rgb(223, 223, 223);
+$listmenu-color: rgb(161, 161, 161);
+$secondry-font: gessLight,sans-serif;
+$icon-color: rgb(212, 212, 212);
+$delete-color: #e74c3c;
+$edit-color: #f1c40f;
+$delete-color-hover: #d14738;
+$edit-color-hover: #dfb50e;
+$success-color: #10ac84;
+$success-color-hover: #0f9775;
+// mixins
+$pseudo-phprefix: "::-webkit-input-placeholder" "::-moz-placeholder" ":-ms-input-placeholder" "::placeholder";
+$ph-styles: ( font-family: $gesLight-font, font-size: small, font-style: normal, font-weight: normal, color: $text-color, letter-spacing : normal, line-height: normal, text-align: inherit, text-decoration: inherit, padding: 0 );
+$ph-form-styles: ( font-family: $gesLight-font, color: $main-color );
+
+@mixin compatibility ( $key, $val ) {
+    -webkit-#{$key}: #{$val};
+    -ms-#{$key}: #{$val};
+    -moz-#{$key}: #{$val};
+    -o-#{$key}: #{$val};
+    #{$key}: #{$val};
+}
+
+@mixin backgroundStyles ($src) {
+    background-image: url(../images/#{$src});
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}
+
+@mixin centeringAbsoluted {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    @include compatibility('transform','translate(-50%,-50%)');
+}
+
+@mixin placeholder-theme($styles) {
+    @each $pseudo in $pseudo-phprefix {
+
+        @at-root #{&}#{$pseudo} {
+            @each $key, $value in $styles {
+                #{$key}: #{$value};
+            }
+        }
+    }
+}
+
+@mixin placeholder {
+    @each $pseudo in $pseudo-phprefix {
+
+        @at-root #{&}#{$pseudo} {
+            @content
+        }
+    }
+}
+
+@mixin floatController {
+    &:after, &:before {
+        display: table;
+        content: " ";
+    }
+
+    &:after {
+        clear: both;
+    }
+}
+/* global styling */
+/* Toaster Styling */
+.app-toasters-wrapper {
+    position: fixed;
+    right: 50px;
+    top: 80px;
+    z-index: 2;
+    width: 260px;
+    height: 500px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .toaster {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid $font-menu-color;
+        background-color: white;
+        border-radius: 3px;
+        font-family: $gesLight-font;
+        position: relative;
+        @include floatController();
+
+        .delete-toaster {
+            position: absolute;
+            color: $font-menu-color;
+            right: 10px;
+            top: 10px;
+            font-size: 13px;
+            cursor: pointer;
+
+            &:hover {
+                color: $text-color;
+            }
+        }
+
+        .toaster-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            float: left;
+            padding-left: 18px;
+            padding-top: 15px;
+            border: 1px solid $text-color;
+
+            i {
+                font-size: 25px;
+            }
+        }
+
+        .toaster-text {
+            width: 160px;
+            float: right;
+            padding-top: 18px;
+            text-align: center;
+            color: $text-color;
+            font-size: 12px;
+        }
+
+        &.toaster-success {
+            border-color: $success-color;
+
+            .toaster-icon {
+                color: $success-color;
+                border-color: $success-color;
+            }
+        }
+
+        &.toaster-danger {
+            border-color: $delete-color;
+
+            .toaster-icon {
+                color: $delete-color;
+                border-color: $delete-color;
+            }
+        }
+
+        &.toaster-warning {
+            border-color: $edit-color;
+
+            .toaster-icon {
+                color: $edit-color;
+                border-color: $edit-color;
+            }
+        }
+    }
+}
