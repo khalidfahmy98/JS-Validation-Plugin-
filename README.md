@@ -1,10 +1,10 @@
-#Description 
+# Description 
 
 Jquery plugin that validate inputs - dropdowns based on developer requirements and choices with several options to output the error message and using as primary validation before saving actions or either any critical 
 
 --------------------------------------------------------------------------------
 
-#How To Use
+# How To Use
   -Implementation 
     Add validations.js , validation.css  , toaster.js to your project 
     paste the following html code for toaster options into your shared layout or either any 
